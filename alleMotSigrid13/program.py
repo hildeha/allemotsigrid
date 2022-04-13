@@ -31,7 +31,7 @@ def main():
 
     # Initialize connection.
     # Uses st.experimental_singleton to only run once.
-    @st.experimental_singleton
+    @st.experimental_singleton(suppress_st_warning=True)
     def init_connection():
         return snowflake.connector.connect(**st.secrets["snowflake"])
 
