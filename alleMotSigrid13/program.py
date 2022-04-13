@@ -27,7 +27,7 @@ def main():
     st.set_page_config(page_title='Alle Mot Sigrid', page_icon=':fairy:',
                        layout='wide', initial_sidebar_state='auto')
 
-    #set_bg_hack_url()
+    set_bg_hack_url()
 
     # Initialize connection.
     # Uses st.experimental_singleton to only run once.
