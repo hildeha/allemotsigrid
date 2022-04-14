@@ -56,7 +56,7 @@ def main():
     number = st.text_input("Number")
 
     if st.button("Submit"):
-        run_query(f"INSERT INTO oppgavesvar (name, number) VALUES ('{name}', '{number}');")
+        run_query(f"INSERT INTO oppgavesvar (name, svar) VALUES ('{name}', '{number}');")
 
 
 if __name__ == '__main__':
