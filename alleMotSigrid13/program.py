@@ -45,7 +45,7 @@ def main():
             cur.execute(query)
             return cur.fetchall()
 
-    rows = run_query("SELECT * from mytable;")
+    rows = run_query("SELECT * from oppgavesvar;")
 
     # Print results.
     for row in rows:
