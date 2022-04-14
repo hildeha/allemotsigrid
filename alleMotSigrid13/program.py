@@ -50,5 +50,14 @@ def main():
     # Print results.
     for row in rows:
         st.write(f"{row[0]} has a :{row[1]}:")
+
+    st.write("Add a new name and number to the database")
+    name = st.text_input("Name")
+    number = st.text_input("Number")
+
+    if st.button("Submit"):
+        run_query(f"INSERT INTO oppgavesvar (name, number) VALUES ('{name}', '{number}');")
+
+
 if __name__ == '__main__':
     main()
