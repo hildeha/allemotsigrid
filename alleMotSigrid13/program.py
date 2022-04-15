@@ -141,7 +141,7 @@ def main():
         fig.update_yaxes(showticklabels=False, showgrid=False, showline=False)
         fig.update_layout(showlegend=False, xaxis=dict(tickfont=dict(size=20)))
 
-        return fig, resultat.index[0]
+        return fig, res_list.index[0]
 
 
 
@@ -175,7 +175,6 @@ def main():
 
 
         while st.session_state['counter'] < 5:
-            st.write(st.session_state['counter'])
 
             print_oppgave((titler[st.session_state['counter']],
                           tekster[st.session_state['counter']],
@@ -217,7 +216,7 @@ def main():
                 fig, vinner = get_results(df)
                 st.header('Vinneren er %s' % vinner)
                 st.plotly_chart(fig)
-                st.ballons()
+                st.balloons()
 
 
 
