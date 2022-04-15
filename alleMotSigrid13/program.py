@@ -165,10 +165,12 @@ def main():
 
             st.session_state['counter'] = st.session_state['counter'] + 1
 
-    finished = run_query(f"SELECT oppgave FROM allemotsigrid WHERE navn = '{st.session_state['navn']}';")
-    if len(finished) == 5:
-        if st.button('OOOOOOOJ!!!! Og vinneren er........!'):
-            st.header('Vinneren er %s' % st.session_state['navn'])
+    if 'navn' in st.session_state:
+        finished = run_query(f"SELECT oppgave FROM allemotsigrid WHERE navn = '{st.session_state['navn']}';")
+        if len(finished) == 5:
+            if st.button('OOOOOOOJ!!!! Og vinneren er........!'):
+                st.header('Vinneren er %s' % st.session_state['navn'])
+
 
 
 
