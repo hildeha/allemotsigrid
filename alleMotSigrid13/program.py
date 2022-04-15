@@ -217,6 +217,7 @@ def main():
                 fig, vinner = get_results(df)
                 st.header('Vinneren er %s' % vinner)
                 st.plotly_chart(fig)
+                st.ballons()
 
 
 
