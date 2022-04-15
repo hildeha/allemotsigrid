@@ -126,7 +126,18 @@ def main():
 
         resultat = svar_edit.groupby('NAVN')['avstand'].sum() / 5
 
-        fig = px.bar(x=list(resultat.sort_values().iloc[:3].values), y=list(resultat.sort_values().iloc[:3].index))
+        fig_input = px.barh(x=list(resultat.sort_values().iloc[:3].values), y=list(resultat.sort_values().iloc[:3].index))
+
+        layout = Layout(paper_bgcolor='rgba(0,0,0,0)',
+                        plot_bgcolor='rgba(0,0,0,0)'
+                        )
+
+        fig = Figure(data=fig_input.data, layout=layout)
+
+        fig.add_hline(y=0, line_width=5, line_color="salmon")
+        fig.update_xaxes(showticklabels=False, showgrid=False, showline=False)
+        fig.update_yaxes(showticklabels=False, showgrid=False, showline=False)
+        fig.update_layout(showlegend=False)
 
         return fig, resultat.index[0]
 
