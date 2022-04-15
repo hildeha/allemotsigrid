@@ -55,7 +55,7 @@ def main():
         sliderverdi = st.slider(tittel, slider[0], slider[1], key=tittel)
 
         if st.button('Lås svar', key=str(slider)+tittel):
-            run_query("INSERT INTO allemotsigrid VALUES (%s, %s, %s);" % (st.session_state['navn'], oppgavenummer, sliderverdi))
+            run_query("INSERT INTO allemotsigrid VALUES ('%s', %s, %s);" % (st.session_state['navn'], oppgavenummer, sliderverdi))
 
     def get_new_ys(liste):
         sorted_index = []
