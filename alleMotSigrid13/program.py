@@ -126,7 +126,7 @@ def main():
 
         resultat = svar_edit.groupby('NAVN')['avstand'].sum() / 5
 
-        fig_input = px.barh(x=list(resultat.sort_values().iloc[:3].values), y=list(resultat.sort_values().iloc[:3].index))
+        fig_input = px.bar(x=list(resultat.sort_values().iloc[:3].values), y=list(resultat.sort_values().iloc[:3].index))
 
         layout = Layout(paper_bgcolor='rgba(0,0,0,0)',
                         plot_bgcolor='rgba(0,0,0,0)'
