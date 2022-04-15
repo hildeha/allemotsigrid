@@ -147,14 +147,17 @@ def main():
                 fig = plot([3,6,5,3,7,6,5], 4, ['A', 'B', 'C', 'D', 'E', 'F', 'G'])
                 st.plotly_chart(fig)
 
-
-                if st.button('Neste oppgave'):
-                    st.session_state['counter'] = st.session_state['counter'] + 1
-                else:
-                    break
-
+                if i < len(titler)-1:
+                    if st.button('Neste oppgave'):
+                        st.session_state['counter'] = st.session_state['counter'] + 1
+                    else:
+                        break
             else:
                 break
+
+        if st.button('OOOOOOOJ!!!! Og vinneren er........!'):
+            st.header('Vinneren er %s' % st.session_state['navn'])
+
 
 
 
