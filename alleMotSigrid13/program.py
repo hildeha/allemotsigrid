@@ -1,3 +1,4 @@
+import pandas as pd
 import streamlit as st
 import snowflake.connector
 from plotly.graph_objs import Layout, Figure
@@ -156,6 +157,8 @@ def main():
                 break
 
         finished = run_query(f"SELECT oppgave FROM allemotsigrid WHERE navn = '{st.session_state['navn']}';")
+
+        st.write(len(finished))
         st.dataframe(finished)
         #if st.button('OOOOOOOJ!!!! Og vinneren er........!'):
         #    st.header('Vinneren er %s' % st.session_state['navn'])
