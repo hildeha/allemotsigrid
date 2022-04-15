@@ -157,6 +157,7 @@ def main():
                 else:
                     if st.button('OOOOOOOJ!!!! Og vinneren er........!'):
                         st.header('Vinneren er %s' % st.session_state['navn'])
+                        break
             else:
                 break
 
