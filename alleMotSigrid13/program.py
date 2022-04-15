@@ -146,7 +146,11 @@ def main():
 
             if st.checkbox('Se resultat', key='resultat_%s' % st.session_state['counter']):
 
-                fig = plot([3,6,5,3,7,6,5], 4, ['A', 'B', 'C', 'D', 'E', 'F', 'G'])
+                data = run_query(f"SELECT navn svar FROM allemotsigrid WHERE oppgave={st.session_state['counter']+1}")
+                df = pd.DataFrame(data, columns=['navn','svar'])
+                df_players = df.loc[df['navn'] != 'fasit']
+                fasit = df.loc[df['navn'] == 'fasit']['svar'].values[0]
+                fig = plot(df.svar, fasit, df.navn)
                 st.plotly_chart(fig)
 
 
