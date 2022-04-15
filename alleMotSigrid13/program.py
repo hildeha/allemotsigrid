@@ -200,9 +200,10 @@ def main():
         if len(finished) == 5:
             if st.button('OOOOOOOJ!!!! Og vinneren er........!'):
                 data = run_query( f"SELECT * FROM allemotsigrid;")
-                fig, vinner = get_results(data)
-                st.header('Vinneren er %s' % vinner)
-                st.plotly_chart(fig)
+                st.write(data)
+                #fig, vinner = get_results(data)
+                #st.header('Vinneren er %s' % vinner)
+                #st.plotly_chart(fig)
 
 
 
