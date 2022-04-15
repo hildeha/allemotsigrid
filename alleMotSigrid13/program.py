@@ -152,18 +152,19 @@ def main():
                 #finished = run_query(f"SELECT oppgave FROM allemotsigrid WHERE navn = '{st.session_state['navn']}';")
                 if st.session_state['counter'] < 4:
                     if st.button('Neste oppgave'):
-                        st.session_state['counter'] = st.session_state['counter'] + 1
+                        #st.session_state['counter'] = st.session_state['counter'] + 1
                     else:
                         break
                 elif st.session_state['counter'] == 4:
                     if st.button('OOOOOOOJ!!!! Og vinneren er........!'):
                         st.header('Vinneren er %s' % st.session_state['navn'])
-                        st.session_state['counter'] = st.session_state['counter'] + 1
+                        #st.session_state['counter'] = st.session_state['counter'] + 1
                         break
                 else:
                     break
             else:
                 break
+            st.session_state['counter'] = st.session_state['counter'] + 1
 
 
 
