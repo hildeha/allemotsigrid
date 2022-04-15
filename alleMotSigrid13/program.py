@@ -3,6 +3,8 @@ import streamlit as st
 import snowflake.connector
 from plotly.graph_objs import Layout, Figure
 import plotly.graph_objects as go
+import plotly.express as px
+
 
 
 def set_bg_hack_url():
@@ -56,7 +58,6 @@ def main():
         sliderverdi = st.slider(tittel, slider[0], slider[1], key=tittel)
 
         if st.button('Lås svar', key=str(slider)+tittel):
-            st.write(f"'{st.session_state['navn']}', {oppgavenummer}, {sliderverdi}")
             run_query(f"INSERT INTO allemotsigrid (navn, oppgave, svar) SELECT '{st.session_state['navn']}', {oppgavenummer}, {sliderverdi} WHERE NOT EXISTS("
                       f"SELECT navn oppgave FROM allemotsigrid WHERE navn= '{st.session_state['navn']}' AND oppgave={oppgavenummer});")
 
@@ -92,8 +93,7 @@ def main():
                                        ))
 
         layout = Layout(paper_bgcolor='rgba(0,0,0,0)',
-                        plot_bgcolor='rgba(0,0,0,0)',
-                        width=900, height=300,
+                        plot_bgcolor='rgba(0,0,0,0)'
                         )
 
         fig = Figure(data=fig_input.data, layout=layout)
@@ -104,6 +104,32 @@ def main():
         fig.update_layout(showlegend=False)
 
         return fig
+
+    def get_results(data):
+
+        fasit = data.loc[data.NAVN == 'fasit']
+        svar = data.loc[data.NAVN != 'fasit'].copy(deep=True)
+
+        slider_range = [(x[1] - x[0]) / 100 for x in slider_vals]
+
+        svar['avstand'] = svar.apply(
+            lambda row: abs(fasit['SVAR'].values[int(row['OPPGAVE']) - 1] - row['SVAR']) / slider_range[
+                int(row['OPPGAVE']) - 1],
+            axis=1)
+
+        data_list = []
+        for navn in svar.NAVN.unique():
+            for i in range(5):
+                if len(svar.loc[(svar.NAVN == navn) & (svar.OPPGAVE == i + 1)]) == 0:
+                    data_list.append([navn, str(i + 1), 0, 100.0])
+        svar_edit = pd.concat([svar, pd.DataFrame(data_list, columns=svar.columns)])
+
+        resultat = svar_edit.groupby('NAVN')['avstand'].sum() / 5
+
+        fig = px.bar(x=list(resultat.sort_values().iloc[:3].values), y=list(resultat.sort_values().iloc[:3].index))
+
+        return fig, resultat.index[0]
+
 
 
     titler = ['Oppgave 1', 'Oppgave 2', 'Oppgave 3', 'Oppgave 4', 'Oppgave 5']
@@ -147,11 +173,10 @@ def main():
             if st.checkbox('Se resultat', key='resultat_%s' % st.session_state['counter']):
 
                 data = run_query(f"SELECT navn, svar FROM allemotsigrid WHERE oppgave={st.session_state['counter']+1}")
-                st.write(data)
                 df = pd.DataFrame(data, columns=['navn','svar'])
                 df_players = df.loc[df['navn'] != 'fasit']
-                fasit = df.loc[df['navn'] == 'fasit']['svar'].values[0]
-                fig = plot(df.svar, fasit, df.navn)
+                fasit = df.loc[df['navn'] == 'fasit']['svar'].values
+                fig = plot(df_players.svar, fasit, df_players.navn)
                 st.plotly_chart(fig)
 
 
@@ -174,7 +199,10 @@ def main():
         finished = run_query(f"SELECT oppgave FROM allemotsigrid WHERE navn = '{st.session_state['navn']}';")
         if len(finished) == 5:
             if st.button('OOOOOOOJ!!!! Og vinneren er........!'):
-                st.header('Vinneren er %s' % st.session_state['navn'])
+                data = run_query( f"SELECT * FROM allemotsigrid;")
+                fig, vinner = get_results(data)
+                st.header('Vinneren er %s' % vinner)
+                st.plotly_chart(fig)
 
 
 
