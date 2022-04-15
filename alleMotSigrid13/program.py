@@ -157,10 +157,11 @@ def main():
                 elif st.session_state['counter'] == 4:
                     if st.button('OOOOOOOJ!!!! Og vinneren er........!'):
                         st.header('Vinneren er %s' % st.session_state['navn'])
+                        st.session_state['counter'] = st.session_state['counter'] + 1
                         break
             else:
                 break
-            
+
 
 
 
