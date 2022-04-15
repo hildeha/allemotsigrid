@@ -55,7 +55,8 @@ def main():
         sliderverdi = st.slider(tittel, slider[0], slider[1], key=tittel)
 
         if st.button('Lås svar', key=str(slider)+tittel):
-            run_query("INSERT INTO allemotsigrid VALUES ('%s', %s, %s);" % (st.session_state['navn'], oppgavenummer, sliderverdi))
+            run_query(f"INSERT INTO allemotsigrid (navn, oppgave, svar) SELECT '{st.session_state['navn']}', {oppgavenummer}, {sliderverdi} WHERE NOT EXISTS("
+                      f"SELECT navn oppgave FROM allemotsigrid WHERE navn= '{st.session_state['navn']}' AND oppgave={oppgavenummer});")
 
     def get_new_ys(liste):
         sorted_index = []
@@ -137,7 +138,7 @@ def main():
             print_oppgave((titler[st.session_state['counter']],
                           tekster[st.session_state['counter']],
                           slider_vals[st.session_state['counter']]),
-                          i
+                          i+1
                           )
 
             if st.checkbox('Se resultat', key='resultat_%s' % st.session_state['counter']):
