@@ -156,7 +156,7 @@ def main():
                 break
 
         finished = run_query(f"SELECT oppgave FROM allemotsigrid WHERE navn = '{st.session_state['navn']}';")
-        st.write(str(finished))
+        st.write([x[0] for x in str(finished)])
         #if st.button('OOOOOOOJ!!!! Og vinneren er........!'):
         #    st.header('Vinneren er %s' % st.session_state['navn'])
 
