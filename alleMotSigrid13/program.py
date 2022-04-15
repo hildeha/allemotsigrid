@@ -126,8 +126,9 @@ def main():
 
         resultat = svar_edit.groupby('NAVN')['avstand'].sum() / 5
 
-        fig_input = px.bar(y=list(resultat.sort_values().iloc[:3].values),
-                           x=list(resultat.sort_values().iloc[:3].index),
+        res_list = list(resultat.sort_values().iloc[:3].index)
+        fig_input = px.bar(y=[2,3,1],
+                           x=[res_list[1], res_list[0], res_list[2]],
                            )
 
         layout = Layout(paper_bgcolor='rgba(0,0,0,0)',
@@ -138,7 +139,7 @@ def main():
 
         fig.update_xaxes(showticklabels=True, showgrid=False, showline=False)
         fig.update_yaxes(showticklabels=False, showgrid=False, showline=False)
-        fig.update_layout(showlegend=False)
+        fig.update_layout(showlegend=False, xaxis=dict(tickfont=dict(size=20)))
 
         return fig, resultat.index[0]
 
