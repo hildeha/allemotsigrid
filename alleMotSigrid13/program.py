@@ -153,6 +153,7 @@ def main():
                 if st.session_state['counter'] < 4:
                     if st.button('Neste oppgave'):
                         #st.session_state['counter'] = st.session_state['counter'] + 1
+                        pass
                     else:
                         break
                 elif st.session_state['counter'] == 4:
@@ -164,6 +165,7 @@ def main():
                     break
             else:
                 break
+
             st.session_state['counter'] = st.session_state['counter'] + 1
 
 
