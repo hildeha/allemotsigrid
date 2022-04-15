@@ -148,19 +148,19 @@ def main():
                 fig = plot([3,6,5,3,7,6,5], 4, ['A', 'B', 'C', 'D', 'E', 'F', 'G'])
                 st.plotly_chart(fig)
 
-                if i < len(titler)-2:
+                finished = run_query(f"SELECT oppgave FROM allemotsigrid WHERE navn = '{st.session_state['navn']}';")
+                if i < len(finished)-1:
                     if st.button('Neste oppgave'):
                         st.session_state['counter'] = st.session_state['counter'] + 1
                     else:
                         break
+                else:
+                    if st.button('OOOOOOOJ!!!! Og vinneren er........!'):
+                        st.header('Vinneren er %s' % st.session_state['navn'])
             else:
                 break
 
-        finished = run_query(f"SELECT oppgave FROM allemotsigrid WHERE navn = '{st.session_state['navn']}';")
-
-        if len(finished) == 5:
-            if st.button('OOOOOOOJ!!!! Og vinneren er........!'):
-                st.header('Vinneren er %s' % st.session_state['navn'])
+                    
 
 
 
