@@ -141,7 +141,7 @@ def main():
         fig.update_yaxes(showticklabels=False, showgrid=False, showline=False)
         fig.update_layout(showlegend=False, xaxis=dict(tickfont=dict(size=20)))
 
-        return fig, res_list.index[0]
+        return fig, res_list[0]
 
 
 
