@@ -135,7 +135,7 @@ def main():
 
 
 
-        while st.session_state['counter'] < 5:
+        while st.session_state['counter'] < 4:
 
             print_oppgave((titler[st.session_state['counter']],
                           tekster[st.session_state['counter']],
