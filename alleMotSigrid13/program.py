@@ -113,14 +113,14 @@ def main():
         slider_range = [(x[1] - x[0]) / 100 for x in slider_vals]
 
         svar['avstand'] = svar.apply(
-            lambda row: abs(fasit['SVAR'].values[int(row['OPPGAVE']) - 1] - row['SVAR']) / slider_range[
+            lambda row: abs(int(fasit['SVAR'].values[int(row['OPPGAVE']) - 1]) - int(row['SVAR'])) / slider_range[
                 int(row['OPPGAVE']) - 1],
             axis=1)
 
         data_list = []
         for navn in svar.NAVN.unique():
             for i in range(5):
-                if len(svar.loc[(svar.NAVN == navn) & (svar.OPPGAVE == i + 1)]) == 0:
+                if len(svar.loc[(svar.NAVN == navn) & (svar.OPPGAVE == str(int(i + 1)))]) == 0:
                     data_list.append([navn, str(i + 1), 0, 100.0])
         svar_edit = pd.concat([svar, pd.DataFrame(data_list, columns=svar.columns)])
 
