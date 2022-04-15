@@ -149,7 +149,7 @@ def main():
                 fig = plot([3,6,5,3,7,6,5], 4, ['A', 'B', 'C', 'D', 'E', 'F', 'G'])
                 st.plotly_chart(fig)
 
-                #finished = run_query(f"SELECT oppgave FROM allemotsigrid WHERE navn = '{st.session_state['navn']}';")
+
                 if st.session_state['counter'] < 4:
                     if st.button('Neste oppgave'):
                         #st.session_state['counter'] = st.session_state['counter'] + 1
@@ -157,10 +157,7 @@ def main():
                     else:
                         break
                 elif st.session_state['counter'] == 4:
-                    if st.button('OOOOOOOJ!!!! Og vinneren er........!'):
-                        st.header('Vinneren er %s' % st.session_state['navn'])
-                        #st.session_state['counter'] = st.session_state['counter'] + 1
-                        break
+                    break
                 else:
                     break
             else:
@@ -168,6 +165,10 @@ def main():
 
             st.session_state['counter'] = st.session_state['counter'] + 1
 
+    finished = run_query(f"SELECT oppgave FROM allemotsigrid WHERE navn = '{st.session_state['navn']}';")
+    if len(finished) == 5:
+        if st.button('OOOOOOOJ!!!! Og vinneren er........!'):
+            st.header('Vinneren er %s' % st.session_state['navn'])
 
 
 
