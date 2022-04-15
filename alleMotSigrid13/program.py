@@ -159,6 +159,8 @@ def main():
                         st.header('Vinneren er %s' % st.session_state['navn'])
                         st.session_state['counter'] = st.session_state['counter'] + 1
                         break
+                else:
+                    break
             else:
                 break
 
