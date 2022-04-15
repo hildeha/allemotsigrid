@@ -135,7 +135,7 @@ def main():
 
 
 
-        while st.session_state['counter'] < 4:
+        while st.session_state['counter'] < 5:
 
             print_oppgave((titler[st.session_state['counter']],
                           tekster[st.session_state['counter']],
@@ -154,12 +154,13 @@ def main():
                         st.session_state['counter'] = st.session_state['counter'] + 1
                     else:
                         break
-                else:
+                elif st.session_state['counter'] == 4:
                     if st.button('OOOOOOOJ!!!! Og vinneren er........!'):
                         st.header('Vinneren er %s' % st.session_state['navn'])
                         break
             else:
                 break
+            
 
 
 
