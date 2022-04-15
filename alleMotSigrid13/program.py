@@ -73,11 +73,11 @@ def main():
         return [x[1] for x in sorted(sorted_index, key=lambda x: x[0])]
 
     def plot(xs, fasit, navn):
-        colors = ['salmon' for x in xs]
-        sizes = [10 for x in xs]
+        #colors = ['salmon' for x in xs]
+        #sizes = [10 for x in xs]
         fig_input = Figure(go.Scatter(x=xs, y=get_new_ys(xs),
                                       mode="markers+text",
-                                      marker={'color': colors[i], 'size': sizes[i]},
+                                      marker={'color': 'salmon', 'size': 10},
                                       text=navn,
                                       textposition="bottom center",
                                       textfont={'color': 'salmon', 'size': 20}
