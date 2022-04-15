@@ -147,7 +147,7 @@ def main():
                 fig = plot([3,6,5,3,7,6,5], 4, ['A', 'B', 'C', 'D', 'E', 'F', 'G'])
                 st.plotly_chart(fig)
 
-                if i < len(titler)-1:
+                if i < len(titler)-2:
                     if st.button('Neste oppgave'):
                         st.session_state['counter'] = st.session_state['counter'] + 1
                     else:
@@ -155,8 +155,10 @@ def main():
             else:
                 break
 
-        if st.button('OOOOOOOJ!!!! Og vinneren er........!'):
-            st.header('Vinneren er %s' % st.session_state['navn'])
+        finished = run_query(f"SELECT oppgave FROM allemotsigrid WHERE navn = '{st.session_state['navn']}';")
+        st.write(finished)
+        #if st.button('OOOOOOOJ!!!! Og vinneren er........!'):
+        #    st.header('Vinneren er %s' % st.session_state['navn'])
 
 
 
