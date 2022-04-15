@@ -158,10 +158,9 @@ def main():
 
         finished = run_query(f"SELECT oppgave FROM allemotsigrid WHERE navn = '{st.session_state['navn']}';")
 
-        st.write(len(finished))
-        st.dataframe(finished)
-        #if st.button('OOOOOOOJ!!!! Og vinneren er........!'):
-        #    st.header('Vinneren er %s' % st.session_state['navn'])
+        if len(finished) == 5:
+            if st.button('OOOOOOOJ!!!! Og vinneren er........!'):
+                st.header('Vinneren er %s' % st.session_state['navn'])
 
 
 
