@@ -136,7 +136,8 @@ def main():
 
             print_oppgave((titler[st.session_state['counter']],
                           tekster[st.session_state['counter']],
-                          slider_vals[st.session_state['counter']])
+                          slider_vals[st.session_state['counter']]),
+                          i
                           )
 
             if st.checkbox('Se resultat', key='resultat_%s' % st.session_state['counter']):
