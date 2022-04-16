@@ -73,7 +73,7 @@ def main():
                     counter += 1
         return [x[1] for x in sorted(sorted_index, key=lambda x: x[0])]
 
-    def plot(xs, fasit, navn):
+    def plot(xs, fasit, navn, plotrange):
         #colors = ['salmon' for x in xs]
         #sizes = [10 for x in xs]
         fig_input = Figure(go.Scatter(x=xs, y=get_new_ys(xs),
@@ -99,7 +99,7 @@ def main():
         fig = Figure(data=fig_input.data, layout=layout)
 
         fig.add_hline(y=0, line_width=5, line_color="salmon")
-        fig.update_xaxes(showticklabels=False, showgrid=False, showline=False)
+        fig.update_xaxes(showticklabels=False, showgrid=False, showline=False, range=[plotrange[0], plotrange[1]])
         fig.update_yaxes(showticklabels=False, showgrid=False, showline=False)
         fig.update_layout(showlegend=False)
 
@@ -188,7 +188,7 @@ def main():
                 df = pd.DataFrame(data, columns=['navn','svar'])
                 df_players = df.loc[df['navn'] != 'fasit']
                 fasit = df.loc[df['navn'] == 'fasit']['svar'].values
-                fig = plot(df_players.svar, fasit, df_players.navn)
+                fig = plot(df_players.svar, fasit, df_players.navn, slider_vals[st.session_state['counter']])
                 st.plotly_chart(fig)
 
 
