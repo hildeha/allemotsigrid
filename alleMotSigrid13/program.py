@@ -160,9 +160,9 @@ def main():
                  'Hvor mange leker tar Georg borti på tre minutter?',
                  'Hvor rask ber noen tante Helle klappe igjen?',
                  'Hvor mange ganger klare onkel Tom og dingle pennen i flasken på 90 sekunder?',
-                 'Hvor mange nonstop ender i påskeegget?']
+                 'Hvor mange Nonstop ender i påskeegget?']
 
-    slider_vals = [(0, 5), (0, 14), (0, 240), (0, 50), (0, 200)]
+    slider_vals = [(0, 5), (0, 14), (0, 240), (0, 50), (0, 140)]
 
     if 'counter' not in st.session_state:
         st.session_state['counter'] = 0
