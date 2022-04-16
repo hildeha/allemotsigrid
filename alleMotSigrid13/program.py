@@ -86,7 +86,7 @@ def main():
 
         fig_input.add_trace(go.Scatter(x=[float(fasit), float(fasit)], y=[3,(-3)],
                                        mode='markers',
-                                       marker={'color': 'yellow', 'size': 50},
+                                       marker={'color': 'yellow', 'size': 30},
                                        text='Fasit',
                                        textposition="top center",
                                        textfont={'color': 'salmon', 'size': 20}
