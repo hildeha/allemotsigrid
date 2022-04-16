@@ -153,16 +153,16 @@ def main():
 
 
 
-    titler = ['Oppgave 1', 'Oppgave 2', 'Oppgave 3', 'Oppgave 4', 'Oppgave 5']
+    titler = ['TomBowling', 'Georgie Shore', 'Fjolls til fjells', 'Onkel Tom dinglefant', 'Snoborama!!']
 
 
-    tekster = ['dette er en oppgave for 1',
-                 'dette er den andre oppgaven',
-                 'tredje oppgave kommer her',
-                 'fjerde oppgave på GGGGGG',
-                 'her er femte og siste oppgave']
+    tekster = ['Du har kanskje hørt om tombola, men har du hørt om TomBowling? Hvor mange brett velter Tom?',
+                 'Hvor mange leker tar Georg borti på tre minutter?',
+                 'Hvor rask ber noen tante Helle klappe igjen?',
+                 'Hvor mange ganger klare onkel Tom og dingle pennen i flasken på 90 sekunder?',
+                 'Hvor mange nonstop ender i påskeegget?']
 
-    slider_vals = [(0, 5), (0, 10), (0, 20), (0, 30), (0, 40)]
+    slider_vals = [(0, 5), (0, 14), (0, 240), (0, 50), (0, 200)]
 
     if 'counter' not in st.session_state:
         st.session_state['counter'] = 0
