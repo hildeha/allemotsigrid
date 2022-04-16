@@ -99,7 +99,7 @@ def main():
         fig = Figure(data=fig_input.data, layout=layout)
 
         fig.add_hline(y=0, line_width=5, line_color="salmon")
-        fig.update_xaxes(showticklabels=False, showgrid=False, showline=False, range=[plotrange[0], plotrange[1]])
+        fig.update_xaxes(showticklabels=False, showgrid=False, showline=False, range=[plotrange[0]-1, plotrange[1]+1])
         fig.update_yaxes(showticklabels=False, showgrid=False, showline=False)
         fig.update_layout(showlegend=False)
 
