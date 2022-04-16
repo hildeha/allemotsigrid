@@ -84,14 +84,14 @@ def main():
                                       textfont={'color': 'salmon', 'size': 20}
                                       ))
 
-        fig_input.add_trace(go.Scatter(x=[fasit, fasit], y=[3, -3],
+        fig_input.add_trace(go.Scatter(x=[fasit, fasit], y=[3,(-3)],
                                        mode='markers',
                                        marker={'color': 'yellow', 'size': 50},
                                        text='Fasit',
                                        textposition="top center",
                                        textfont={'color': 'salmon', 'size': 20}
                                        ))
-        fig_input.add_trace(go.Scatter(x=[fasit, fasit, fasit, fasit, fasit], y=[2, 1, 0, -1, -2],
+        fig_input.add_trace(go.Scatter(x=[fasit, fasit, fasit, fasit, fasit], y=[2, 1, 0, (-1), (-2)],
                                        mode='markers',
                                        marker={'color': 'yellow', 'size': 10},
                                        text='Fasit',
