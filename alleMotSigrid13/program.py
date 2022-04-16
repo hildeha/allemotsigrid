@@ -84,9 +84,16 @@ def main():
                                       textfont={'color': 'salmon', 'size': 20}
                                       ))
 
-        fig_input.add_trace(go.Scatter(x=[fasit], y=[0],
+        fig_input.add_trace(go.Scatter(x=[fasit, fasit], y=[3, -3],
                                        mode='markers',
                                        marker={'color': 'yellow', 'size': 50},
+                                       text='Fasit',
+                                       textposition="top center",
+                                       textfont={'color': 'salmon', 'size': 20}
+                                       ))
+        fig_input.add_trace(go.Scatter(x=[fasit, fasit, fasit, fasit, fasit], y=[2, 1, 0, -1, -2],
+                                       mode='markers',
+                                       marker={'color': 'yellow', 'size': 10},
                                        text='Fasit',
                                        textposition="top center",
                                        textfont={'color': 'salmon', 'size': 20}
@@ -99,6 +106,7 @@ def main():
         fig = Figure(data=fig_input.data, layout=layout)
 
         fig.add_hline(y=0, line_width=5, line_color="salmon")
+        fig.add_vline(x=fasit, line_width=5, line_color="yellow")
         fig.update_xaxes(showticklabels=False, showgrid=False, showline=False, range=[plotrange[0]-1, plotrange[1]+1])
         fig.update_yaxes(showticklabels=False, showgrid=False, showline=False)
         fig.update_layout(showlegend=False)
