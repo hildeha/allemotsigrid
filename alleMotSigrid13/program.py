@@ -76,7 +76,7 @@ def main():
     def plot(xs, fasit, navn, plotrange):
         #colors = ['salmon' for x in xs]
         #sizes = [10 for x in xs]
-        fig_input = Figure(go.Scatter(x=xs, y=get_new_ys(xs),
+        fig_input = Figure(go.Scatter(x=[float(x) for x in xs], y=[float(y) for y in get_new_ys(xs)],
                                       mode="markers+text",
                                       marker={'color': 'salmon', 'size': 10},
                                       text=navn,
@@ -84,14 +84,14 @@ def main():
                                       textfont={'color': 'salmon', 'size': 20}
                                       ))
 
-        fig_input.add_trace(go.Scatter(x=[fasit, fasit], y=[3,(-3)],
+        fig_input.add_trace(go.Scatter(x=[float(fasit), float(fasit)], y=[3,(-3)],
                                        mode='markers',
                                        marker={'color': 'yellow', 'size': 50},
                                        text='Fasit',
                                        textposition="top center",
                                        textfont={'color': 'salmon', 'size': 20}
                                        ))
-        fig_input.add_trace(go.Scatter(x=[fasit, fasit, fasit, fasit, fasit], y=[2, 1, 0, (-1), (-2)],
+        fig_input.add_trace(go.Scatter(x=[float(fasit) for f in range(5)], y=[2, 1, 0, (-1), (-2)],
                                        mode='markers',
                                        marker={'color': 'yellow', 'size': 10},
                                        text='Fasit',
@@ -106,7 +106,7 @@ def main():
         fig = Figure(data=fig_input.data, layout=layout)
 
         fig.add_hline(y=0, line_width=5, line_color="salmon")
-        fig.add_vline(x=fasit, line_width=5, line_color="yellow")
+        fig.add_vline(x=float(fasit), line_width=5, line_color="yellow")
         fig.update_xaxes(showticklabels=False, showgrid=False, showline=False, range=[plotrange[0]-1, plotrange[1]+1])
         fig.update_yaxes(showticklabels=False, showgrid=False, showline=False)
         fig.update_layout(showlegend=False)
